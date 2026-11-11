@@ -1,1 +1,166 @@
+LeetCode solution – 4Sum
+Topics: Array, Sorting, Two Pointers
+Language: Java
 
+1. Problem Description
+Given an integer array "nums" and an integer "target", find all unique quadruplets "[a, b, c, d]" such that:
+"a + b + c + d = target"
+The answer should not contain duplicate quadruplets.
+
+2. Example
+Input:
+nums = [1, 0, -1, 0, -2, 2]
+target = 0
+
+Output:
+[[-2, -1, 1, 2],
+ [-2, 0, 0, 2],
+ [-1, 0, 0, 1]]
+
+Explanation:
+The following four-number combinations have a sum equal to 0:
+
+- -2 + -1 + 1 + 2 = 0
+- -2 + 0 + 0 + 2 = 0
+- -1 + 0 + 0 + 1 = 0
+
+Therefore, we return these three unique quadruplets.
+
+3. Approach – Sorting + Two Pointers
+
+We solve this problem using two nested "for" loops and two pointers.
+
+Step 1: Sort the array: Arrays.sort(nums);
+
+Sorted array:
+[-2, -1, 0, 0, 1, 2]
+
+Step 2: Use the first for loop
+The first loop selects the first number of the quadruplet.
+We use variable "i".
+
+Step 3: Use the second for loop
+The second loop selects the second number.
+We use variable "j".
+
+Step 4: Use two pointers
+
+ "left = j + 1"
+ "right = n - 1"
+
+These pointers select the third and fourth numbers.
+
+Step 5: Calculate the sum
+
+long sum = (long) nums[i] + nums[j] + nums[left] + nums[right];
+
+There are three possibilities:
+
+• If sum equals target: Store the quadruplet.
+• If sum is smaller than target: Move "left" forward.
+• If sum is greater than target: Move "right" backward.
+
+Step 6: Avoid duplicates
+We use "continue" and "while" loops to skip repeated numbers and avoid duplicate quadruplets.
+
+4. Java Solution
+
+import java.util.*;
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        Arrays.sort(nums);
+
+        int n = nums.length;
+
+        for (int i = 0; i < n - 3; i++) {
+
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            for (int j = i + 1; j < n - 2; j++) {
+
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                    continue;
+                }
+
+                int left = j + 1;
+                int right = n - 1;
+
+                while (left < right) {
+
+                    long sum = (long) nums[i] + nums[j]
+                             + nums[left] + nums[right];
+
+                    if (sum == target) {
+
+                        result.add(Arrays.asList(
+                            nums[i], nums[j],
+                            nums[left], nums[right]
+                        ));
+
+                        left++;
+                        right--;
+
+                        while (left < right &&
+                               nums[left] == nums[left - 1]) {
+                            left++;
+                        }
+
+                        while (left < right &&
+                               nums[right] == nums[right + 1]) {
+                            right--;
+                        }
+
+                    } else if (sum < target) {
+                        left++;
+                    } else {
+                        right--;
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+}
+
+5. Important Variables
+Variable      Meaning
+"i"        First number
+"j"        Second number
+"left"     Third number
+"right"    Fourth number
+"sum"      Sum of four numbers
+"target"   Required sum
+"result"   Stores unique quadruplets
+"n"        Length of the array
+
+6. Time and Space Complexity
+
+Time Complexity: O(n³)
+- Sorting takes O(n log n).
+- Two nested loops and the two-pointer traversal take O(n³).
+
+Space Complexity: O(1) auxiliary space, excluding sorting implementation details and the output list.
+
+7. Important Things I Learned
+
+1. How to sort an array using "Arrays.sort()".
+2. How to use two nested loops.
+3. How to implement the Two Pointer technique.
+4. How to avoid duplicate combinations.
+5. Why "long" is useful to prevent integer overflow.
+6. How to solve array problems efficiently.
+
+8. Conclusion
+
+The 4Sum problem is an extension of the 3Sum problem.
+
+- 3Sum uses one fixed number and two pointers.
+- 4Sum uses two fixed numbers and two pointers.
+
+This problem helped me understand nested loops, sorting, and the Two Pointer technique in Java.
