@@ -1,1 +1,53 @@
+LeetCode solutikn - Swap Nodes in Pairs
 
+Approach: Iterative Linked List
+
+Problem
+Swap every two adjacent nodes in a linked list and return the modified list.
+
+Example
+Input: "1 → 2 → 3 → 4"
+Output: "2 → 1 → 4 → 3"
+
+solution
+
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode prev = dummy;
+
+        while (prev.next != null && prev.next.next != null) {
+
+            ListNode first = prev.next;
+            ListNode second = first.next;
+
+            first.next = second.next;
+            second.next = first;
+            prev.next = second;
+
+            prev = first;
+        }
+
+        return dummy.next;
+    }
+}
+
+
+Approach
+1. Create a dummy node before the head.
+2. Use "prev" to track the node before the current pair.
+3. Use "first" and "second" to identify the two nodes.
+4. Change their "next" references to swap them.
+5. Move "prev" forward and repeat until fewer than two nodes remain.
+
+Complexity Analysis
+
+- Time Complexity: O(n) – Each node is processed once.
+- Space Complexity: O(1) – Only a few extra pointers are used.
+
+Key Learning
+
+Learned how to swap adjacent nodes in a linked list by changing references without changing the node values.
