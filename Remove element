@@ -1,1 +1,68 @@
+LeetCode solution – Remove Element
 
+Topic: Array, Two Pointers
+
+Problem
+
+Given an integer array "nums" and an integer "val", remove all occurrences of "val" from the array in-place.
+Return the number of elements that are not equal to "val".
+
+Example
+
+Input:
+nums = [3, 2, 2, 3]
+val = 3
+
+Output:
+2
+
+Explanation:
+
+The number "3" appears twice in the array. We remove both occurrences.
+The remaining elements are:[2, 2]
+
+Therefore, "k = 2".
+
+Approach – Two Pointers
+
+We use two variables:
+
+- "i": Used to check every element in the array.
+- "k": Used to store the position of the next valid element.
+
+Steps
+
+1. Initialize "k = 0".
+2. Traverse the array using a for loop.
+3. Check whether "nums[i]" is not equal to "val".
+4. If the condition is true, copy "nums[i]" into "nums[k]".
+5. Increase "k" by 1.
+6. Finally, return "k".
+
+Java Code
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+
+        int k = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+
+            if (nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k;
+    }
+}
+
+Time and Space Complexity
+
+- Time Complexity: O(n) – We traverse the array once.
+- Space Complexity: O(1) – We use constant extra space.
+
+Key Learning
+This problem helps us understand the Two Pointers technique and how to modify an array in-place without using another array.
+LeetCode Problem: https://leetcode.com/problems/remove-element/
