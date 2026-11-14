@@ -1,1 +1,37 @@
+LeetCode solution - Reverse Nodes in k-Group
+Topic: Linked List, Recursion
 
+Problem Description
+Reverse the nodes of a linked list in groups of size "k".
+If the remaining nodes are fewer than "k", leave them unchanged.
+We are not allowed to change node values. We can only change the links between nodes.
+
+Example
+Input:
+head = [1,2,3,4,5]
+k = 2
+Output:
+[2,1,4,3,5]
+
+Approach
+
+1. First, check whether at least "k" nodes are available.
+2. If fewer than "k" nodes exist, return the original head.
+3. Reverse the current group using three pointers: "prev", "curr", and "nextNode".
+4. Connect the reversed group to the remaining linked list using recursion.
+5. Return the new head.
+
+Important Concepts
+
+- Linked List Reversal
+- Three Pointers
+- Recursion
+- Changing Node Connections
+
+Complexity Analysis
+
+- Time Complexity: O(n)
+- Auxiliary Space: O(n) due to recursion.
+
+Learning Outcome
+Learned how to reverse a linked list in groups of k using recursion and pointer manipulation.
