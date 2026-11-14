@@ -1,1 +1,26 @@
+Longest Substring Without Repeating Characters
+Approach: Sliding Window + HashSet
 
+Explanation
+The goal is to find the length of the longest substring without repeating characters.
+1. Create a HashSet to store unique characters.
+2. Use two pointers, "left" and "right", to maintain a sliding window.
+3. Move the right pointer through the string.
+4. If a duplicate character is found, remove characters from the left side until the duplicate is removed.
+5. Add the current character to the HashSet.
+6. Calculate the current substring length.
+7. Update the maximum length.
+
+Example
+Input: "s = "abcabcbb""
+Output: "3"
+The longest substring without repeating characters is ""abc"".
+Complexity Analysis
+- Time Complexity: O(n)
+- Space Complexity: O(min(n, character set size))
+
+Concepts Learned
+- HashSet
+- Sliding Window
+- Two Pointers
+- String Traversal
