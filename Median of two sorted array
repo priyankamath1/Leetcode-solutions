@@ -1,1 +1,67 @@
+Median of Two Sorted Arrays
 
+Problem: LeetCode 4
+
+Difficulty: Hard
+
+Approach: Merge Two Sorted Arrays
+
+1. Create a new array to store elements from both arrays.
+2. Use three pointers: "i", "j", and "k".
+3. Compare elements from both arrays.
+4. Insert the smaller element into the new array.
+5. Copy any remaining elements.
+6. Find the median using the total number of elements.
+
+Median Formula
+
+- Odd number of elements: Return the middle element.
+- Even number of elements: Calculate the average of the two middle elements.
+ solution -
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+
+        int[] arr = new int[nums1.length + nums2.length];
+
+        int i = 0, j = 0, k = 0;
+
+        while (i < nums1.length && j < nums2.length) {
+
+            if (nums1[i] < nums2[j]) {
+                arr[k++] = nums1[i++];
+            } else {
+                arr[k++] = nums2[j++];
+            }
+        }
+
+        while (i < nums1.length) {
+            arr[k++] = nums1[i++];
+        }
+
+        while (j < nums2.length) {
+            arr[k++] = nums2[j++];
+        }
+
+        int n = arr.length;
+
+        if (n % 2 == 1) {
+            return arr[n / 2];
+        } else {
+            return (arr[n / 2 - 1] + arr[n / 2]) / 2.0;
+        }
+    }
+}
+
+Complexity Analysis
+
+- Time Complexity: O(m + n)
+- Space Complexity: O(m + n)
+
+Note: This is a basic merging approach. The problem's required optimal solution uses binary search with O(log(min(m,n))) time complexity.
+
+Key Learning
+This problem helps us understand:
+- Two-pointer technique
+- Merging sorted arrays
+- Finding the median
+- Binary search (in the optimal approach)
