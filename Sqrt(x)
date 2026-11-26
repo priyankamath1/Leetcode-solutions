@@ -1,1 +1,69 @@
+LeetCode solution – Sqrt(x)
 
+Problem
+Given a non-negative integer "x", return the square root of "x" rounded down to the nearest integer.
+You cannot use the built-in "Math.sqrt()" function.
+
+Approach: Binary Search
+We use Binary Search to find the integer square root.
+
+Java Solution
+class Solution {
+    public int mySqrt(int x) {
+
+        if (x == 0) {
+            return 0;
+        }
+
+        int left = 1;
+        int right = x;
+        int ans = 0;
+
+        while (left <= right) {
+
+            int mid = left + (right - left) / 2;
+
+            if (mid <= x / mid) {
+                ans = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+}
+
+Explanation
+
+1. If "x" is 0, return 0.
+2. Initialize "left = 1" and "right = x".
+3. Calculate the middle value using "mid".
+4. Check whether "mid <= x / mid".
+5. If true, store "mid" in "ans" and search the right half.
+6. Otherwise, search the left half.
+7. Return "ans".
+
+Example
+Input: "x = 8"
+Output: "2"
+
+Explanation:
+- 2 × 2 = 4
+- 3 × 3 = 9
+
+Since 9 is greater than 8, the answer is 2.
+
+Complexity Analysis
+- Time Complexity: O(log x)
+- Space Complexity: O(1)
+
+Concepts Learned
+- Binary Search
+- While Loop
+- Integer Division
+- Search Space Reduction
+
+LeetCode
+"LeetCode 69 – Sqrt(x)" (https://leetcode.com/problems/sqrtx/)
