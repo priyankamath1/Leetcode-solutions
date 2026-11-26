@@ -4,28 +4,6 @@ Problem
 Given a string "s" consisting of words and spaces, return the length of the last word in the string.
 A word is a maximal substring consisting of non-space characters only.
 
-Example 1
-Input:
-s = "Hello World"
-
-Output:
-5
-
-Explanation:
-
-The last word is ""World"" and its length is 5.
-
-Example 2
-
-Input:
-s = "   fly me   to   the moon  "
-
-Output:
-4
-Explanation:
-
-The last word is ""moon"" and its length is 4.
-
 Java Solution
 
 class Solution {
@@ -37,8 +15,25 @@ class Solution {
     }
 }
 
-Approach
+Example 1
+Input:
+s = "Hello World"
+Output:
+5
 
+Explanation:
+The last word is ""World"" and its length is 5.
+
+Example 2
+Input:
+s = "   fly me   to   the moon  "
+Output:
+4
+
+Explanation:
+The last word is ""moon"" and its length is 4.
+
+Approach
 1. Use "trim()" to remove leading and trailing spaces.
 2. Use "split(" ")" to divide the string into words.
 3. Use "words.length - 1" to access the last word.
